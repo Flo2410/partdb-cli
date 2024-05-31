@@ -33,6 +33,11 @@ async fn main() -> anyhow::Result<()> {
       FunType::Show(fun_args) => {
         let part = partdb.get_part(fun_args.id).await?;
 
+        if fun_args.raw {
+          println!("{}", serde_json::to_string(&part)?);
+          return Ok(());
+        }
+
         println!("ID: {}", fun_args.id);
         println!("Name: {}", part.name);
         println!("Description: {}", part.description);

@@ -42,4 +42,7 @@ pub enum FunType {
 pub struct FunArgs {
   /// The id of the entity
   pub id: u32,
+
+  #[arg(long, action)]
+  pub raw: bool,
 }
