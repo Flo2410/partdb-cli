@@ -1,0 +1,5 @@
+additionalProperties:
+  packageName: partdb-rs
+  packageVersion: 1.12.0
+  supportAsync: true
+  preferUnsignedInt: true
