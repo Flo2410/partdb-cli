@@ -8,6 +8,10 @@ pub struct CliArgs {
   #[clap(subcommand)]
   pub entity: EntityType,
 
+  /// The PartDB URL
+  #[arg(short, long)]
+  pub url: String,
+
   /// The PartDB API token
   #[arg(short, long)]
   pub api_token: String,
