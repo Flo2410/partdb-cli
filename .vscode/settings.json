@@ -1,0 +1,9 @@
+{
+  "ltex.language": "en-US",
+  "ltex.additionalRules.motherTongue": "de-AT",
+  "ltex.dictionary": {
+    "en-US": [
+      "PartDB"
+    ]
+  }
+}
