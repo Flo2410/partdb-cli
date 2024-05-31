@@ -33,4 +33,13 @@ pub struct EntityArgs {
 pub enum FunType {
   /// List all entries of the entity
   List,
+
+  /// Show inforamtion about a part
+  Show(FunArgs),
+}
+
+#[derive(Debug, Args)]
+pub struct FunArgs {
+  /// The id of the entity
+  pub id: u32,
 }

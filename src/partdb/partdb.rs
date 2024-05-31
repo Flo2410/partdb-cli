@@ -32,4 +32,13 @@ impl PartDB {
     let res = self.client.get(self.url.join("/api/parts")?).send().await?;
     Ok(serde_json::from_str::<Vec<Part>>(res.text().await?.as_str())?)
   }
+
+  pub async fn get_part(&self, id: u32) -> anyhow::Result<Part> {
+    let res = self
+      .client
+      .get(self.url.join(format!("/api/parts/{}", id).as_str())?)
+      .send()
+      .await?;
+    Ok(serde_json::from_str(res.text().await?.as_str())?)
+  }
 }

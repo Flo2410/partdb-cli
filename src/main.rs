@@ -17,10 +17,11 @@ async fn main() -> anyhow::Result<()> {
   let partdb = PartDB::new(Url::from_str(&args.url)?, args.api_token)?;
 
   match args.entity {
-    EntityType::Part(part) => match part.function {
+    EntityType::Part(entity_args) => match entity_args.function {
       FunType::List => {
-        println!("Here are the parts:");
         let parts = partdb.get_parts().await?;
+
+        println!("Here are the parts:");
         println!("Num: {}", parts.len());
         for part in parts.iter() {
           println!("Name: {}", part.name);
@@ -28,6 +29,13 @@ async fn main() -> anyhow::Result<()> {
           println!("ID: {}", part.id);
           println!("");
         }
+      }
+      FunType::Show(fun_args) => {
+        let part = partdb.get_part(fun_args.id).await?;
+
+        println!("ID: {}", fun_args.id);
+        println!("Name: {}", part.name);
+        println!("Description: {}", part.description);
       }
     },
   }
